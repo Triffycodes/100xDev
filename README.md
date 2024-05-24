@@ -1,1 +1,1 @@
-##JavaScript Practice assignment
+## JavaScript Practice assignment
