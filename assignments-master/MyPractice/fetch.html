@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div id="container">
+
+  </div>
+  <script>
+    // function getAnimalData(){
+    //   alert("Hello Adarsh")
+    //   const res = fetch("https://fakerapi.it/api/v1/persons").then(res => {
+    //   res.json().then( finalData =>{
+    //       console.log(finalData)
+    //     })
+    //   })
+    // }
+
+    async function getAnimalData() {
+      alert("Hello Adarsh")
+      const res = await fetch("https://fakerapi.it/api/v1/persons")
+      const data = await res.json();
+      document.getElementById("container").innerHTML = JSON.stringify(data.data);
+
+    }
+
+  </script>
+  <button onclick="getAnimalData()">Get Animal Data</button>
+  <script src="script.js"></script>
+</body>
+
+</html>
