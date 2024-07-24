@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<script>
+//Debounce
+let timeout;
+async function DebounceCalculateTotal() {
+  clearTimeout(timeout)
+  timeout = setTimeout(function() {
+    calculateTotal()
+  }, 1000);
+
+}
+
+// Async Function
+async function calculateTotal() {
+  let principal = document.getElementById("input1").value;
+  let rate = document.getElementById("input2").value;
+  let time = document.getElementById("input3").value;
+  //let total;
+  const ans = await fetch("https://sum-server.100xdevs.com/interest?principal=" + principal + "&rate=" + rate + "&time=" + time)
+  const answer = await ans.json();
+
+  document.getElementById("result").innerHTML = "Total= " + answer.total;
+  document.getElementById("result").innerHTML += "<br>Interest = "+ answer.interest;
+
+}
+
+</script>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Debounce 2</title>
+  
+</head>
+
+<body>
+
+  <input id="input1"  placeholder="Principal"></input><br>
+  <br>
+  <input id="input2"  placeholder="Rate"></input><br>
+  
+  <input id="input3"  placeholder="Time"></input><br>
+  <br>
+  <button onclick="DebounceCalculateTotal()">Submit</button>
+
+ 
+  <div id="result"></div>
+</body>
+
+</html>

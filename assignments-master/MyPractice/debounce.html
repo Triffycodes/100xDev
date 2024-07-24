@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<script>
+//Debounce
+let timeout;
+async function DebouncePopulateDiv() {
+  clearTimeout(timeout)
+  timeout = setTimeout(function() {
+    addWithAsync()
+  }, 1000);
+
+}
+
+// Promise function
+function addWithPromise() {
+  let a = document.getElementById("input1").value;
+  let b = document.getElementById("input2").value;
+  //let c = parseInt(a) + parseInt(b);
+  fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b)
+    .then(function(ans) {
+      console.log(ans);
+      ans.text()
+        .then(function(answer) {
+          console.log(answer);
+          document.getElementById("result").innerHTML = answer;
+        })
+    });
+  //const d = document.getElementById("result");
+  //d.innerHTML = c; 
+}
+
+// Async Function
+async function addWithAsync() {
+  let a = document.getElementById("input1").value;
+  let b = document.getElementById("input2").value;
+
+  const ans = await fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b)
+  const answer = await ans.text();
+  document.getElementById("result").innerHTML = answer;
+}
+
+
+
+</script>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Debounce</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+  <input id="input1" oninput="DebouncePopulateDiv()" placeholder="First number"></input><br>
+  <br>
+  <input id="input2" oninput="DebouncePopulateDiv()" placeholder="Second number"></input><br>
+  <br>
+
+  <script src="script.js"></script>
+  <div id="result"></div>
+</body>
+
+</html>
