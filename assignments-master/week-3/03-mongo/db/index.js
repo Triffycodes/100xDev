@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const { ZodString } = require('zod');
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://adarshshankar:triffycodes%402097@cluster0.frjqtav.mongodb.net/');
+mongoose.connect('mongodb+srv://adarshshankar:triffycodes%402097@cluster0.frjqtav.mongodb.net/courses_app');
+
 
 // Define schemas
 const AdminSchema = new mongoose.Schema({
